@@ -179,9 +179,7 @@ const Experience = () => {
 
   return (
     <>
-      {/* <Perf /> */}
       <ScrollControls damping={0} pages={4.3}>
-
         <Scroll>
           <Items />
         </Scroll>
