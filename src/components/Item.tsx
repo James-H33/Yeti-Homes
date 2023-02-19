@@ -21,7 +21,6 @@ function Item({ url, scale, ...props }: any) {
       <Image
         ref={ref}
         onPointerOver={() => hover(true)}
-        // onPointerOut={() => hover(false)}
         scale={scale}
         url={url}
       />
@@ -121,28 +120,12 @@ function Items() {
         position: [w / 2.5, -(fourthSize), 0]
       },
 
-      // {
-      //   path:"/2.jpg",
-      //   scale: [halfSize, halfSize, 1],
-      //   position: [w / 30, -h * 0.85, 0]
-      // },
-      // {
-      //   path:"/4-1.jpg",
-      //   scale: [thridSize + 0.5, thridSize + 0.5, 1],
-      //   position: [-w / 4, -h * 1, 0]
-      // },
-
       {
         path:"/4.jpg",
         scale: [halfSize, halfSize, 1],
         position: [-(w / 2) + (w / 2), -h * 0.9, 0]
       },
 
-      // {
-      //   path: '/5.jpg',
-      //   scale: [fifthSize, fifthSize, 1],
-      //   position: [w / 10, -h * 1.75, 0]
-      // },
       {
         path: '/6.jpg',
         scale: [w, w, 1],

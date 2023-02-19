@@ -1,9 +1,7 @@
 import { Scroll, ScrollControls } from '@react-three/drei'
-import { useFrame } from '@react-three/fiber'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import './Experience.css'
 import Items from './Item'
-import { Perf } from 'r3f-perf'
 
 function useElementObserverRef(opts: any) {
   const containerRef = useRef<any>(null);
