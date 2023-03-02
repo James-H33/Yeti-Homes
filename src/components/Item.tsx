@@ -46,57 +46,57 @@ function Items() {
 
   let setup = [
     {
-      path: '/1.jpg',
+      path: "1.jpg",
       scale: [thridSize, thridSize, 1],
       position: [-w / 6, 0, 0]
     },
     {
-      path: '/1-1.jpg',
+      path: "1-1.jpg",
       scale: [thridSize, thridSize, 1],
       position: [w / 7, (fourthSize), 0]
     },
     {
-      path: '/1-2.jpg',
+      path: "1-2.jpg",
       scale: [halfSize, thridSize, 1],
       position: [w / 7, -(fourthSize), 0]
     },
 
     {
 
-      path:"/2.jpg",
+      path: "2.jpg",
       scale: [2, thridSize, 1],
       position: [w / 30, -h * 0.85, 0]
     },
     {
-      path:"/4-1.jpg",
+      path: "4-1.jpg",
       scale: [thridSize, fifthSize, 1],
       position: [-w / 4, -h * 1, 0]
     },
     {
 
-      path:"/4.jpg",
+      path: "4.jpg",
       scale: [fifthSize, halfSize, 1],
       position: [w / 4, -h * 1.2, 0]
     },
 
     {
-      path: '/5.jpg',
+      path: "5.jpg",
       scale: [fifthSize, fifthSize, 1],
       position: [w / 10, -h * 1.75, 0]
     },
     {
-      path: '/6.jpg',
+      path: "6.jpg",
       scale: [thridSize, thridSize, 1],
       position: [-w / 4, -h * 2, 0]
     },
 
     {
-      path: '/12.jpg',
+      path: "12.jpg",
       scale: [halfSize, halfSize, 1],
       position: [-w / 4, -h * 2.6, 0]
     },
     {
-      path: '/8.jpg',
+      path: "8.jpg",
       scale: [halfSize, halfSize, 1],
       position: [w / 4, -h * 3.1, 0]
     }
@@ -105,46 +105,46 @@ function Items() {
   if (isMobile) {
    setup = [
       {
-        path: '/1.jpg',
+        path: "1.jpg",
         scale: [halfSize, halfSize, 1],
         position: [-w / 6, h * 0.1, 0]
       },
       {
-        path: '/1-1.jpg',
+        path: "1-1.jpg",
         scale: [halfSize, halfSize, 1],
         position: [w / 7, h * 0.3, 0]
       },
       {
-        path: '/1-2.jpg',
+        path: "1-2.jpg",
         scale: [halfSize, thridSize, 1],
         position: [w / 2.5, -(fourthSize), 0]
       },
 
       {
-        path:"/4.jpg",
+        path:"4.jpg",
         scale: [halfSize, halfSize, 1],
         position: [-(w / 2) + (w / 2), -h * 0.9, 0]
       },
 
       {
-        path: '/6.jpg',
+        path: "6.jpg",
         scale: [w, w, 1],
         position: [0, -h * 1.8, 0]
       },
 
       {
-        path: '/7.jpg',
+        path: "7.jpg",
         scale: [halfSize, halfSize, 1],
         position: [w / 2.25, -h * 2.6, 0]
       },
 
       {
-        path: '/12.jpg',
+        path: "12.jpg",
         scale: [halfSize, halfSize, 1],
         position: [-w / 2.25, -h * 2.6, 0]
       },
       {
-        path: '/8.jpg',
+        path: "8.jpg",
         scale: [halfSize * 2, halfSize, 1],
         position: [0, -h * 3.1, 0]
       }
