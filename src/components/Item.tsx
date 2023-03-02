@@ -92,7 +92,7 @@ function Items() {
 
     {
       path: '/12.jpg',
-      scale: [halfSize, thridSize, 1],
+      scale: [halfSize, halfSize, 1],
       position: [-w / 4, -h * 2.6, 0]
     },
     {
@@ -133,9 +133,15 @@ function Items() {
       },
 
       {
+        path: '/7.jpg',
+        scale: [halfSize, halfSize, 1],
+        position: [w / 2.25, -h * 2.6, 0]
+      },
+
+      {
         path: '/12.jpg',
-        scale: [halfSize, thridSize, 1],
-        position: [-w / 4, -h * 2.6, 0]
+        scale: [halfSize, halfSize, 1],
+        position: [-w / 2.25, -h * 2.6, 0]
       },
       {
         path: '/8.jpg',
