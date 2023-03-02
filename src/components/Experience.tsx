@@ -52,7 +52,9 @@ function ObserveredElement({ children, visible, defaultClassName, activeClassNam
 
 const Experience = () => {
   const isMobile = window.innerWidth < 600;
-
+  const scrollStyleProps: any = {
+    style: { width: '100%' }
+  }
   let setup = [
       {
         title: 'Yeti',
@@ -184,7 +186,7 @@ const Experience = () => {
           <Items />
         </Scroll>
 
-        <Scroll html style={{ width: '100%' }}>
+        <Scroll html {...scrollStyleProps} >
           {htmlSections}
         </Scroll>
       </ScrollControls>
