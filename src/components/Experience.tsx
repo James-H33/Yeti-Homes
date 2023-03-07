@@ -1,7 +1,7 @@
-import { Scroll, ScrollControls } from '@react-three/drei'
-import { useEffect, useMemo, useRef, useState } from 'react'
-import './Experience.css'
-import Items from './Item'
+import { Scroll, ScrollControls } from '@react-three/drei';
+import { memo, useEffect, useMemo, useRef, useState } from 'react';
+import './Experience.css';
+import Items from './Item';
 
 function useElementObserverRef(opts: any) {
   const containerRef = useRef<any>(null);
@@ -52,56 +52,72 @@ function ObserveredElement({ children, visible, defaultClassName, activeClassNam
 
 const Experience = () => {
   const isMobile = window.innerWidth < 600;
+  let w = window.innerWidth;
+  let h = window.innerHeight;
+
   const scrollStyleProps: any = {
     style: { width: '100%' }
   }
+
+  let maxWidth = Math.min(w, 1800);
+  let marginOffset = (w - maxWidth) / 2;
+
+  const xAxisCalc = (n: number) => {
+    return marginOffset + (n * w / 100) + 'px';
+  }
+
+  const topCalc = (n: number, offsetPx: number = 0) => {
+    return  (n * h / 100) + offsetPx + 'px';
+  }
+
+
   let setup = [
       {
         title: 'Yeti',
-        top: `20vh`,
-        left: '10vw'
+        top: '20vh',
+        left: xAxisCalc(10)
       },
 
       {
         title: 'Homes',
         top: '75vh',
-        left: '10vw'
+        left: xAxisCalc(10)
       },
 
       {
         title: 'off grid.',
         top: '170vh',
-        left: '10vw'
+        left: xAxisCalc(10)
       },
 
       {
         title: 'Modern',
-        top: '250vh',
-        right: '15vw'
+        top: topCalc(250),
+        right: xAxisCalc(15)
       },
 
       {
         title: 'Living.',
-        top: '260vh',
-        right: '12vw'
+        top: topCalc(250, 150),
+        right: xAxisCalc(12)
       },
 
       {
         title: 'Find',
-        top: '340vh',
-        left: '10vw'
+        top: topCalc(355),
+        left: xAxisCalc(10)
       },
 
       {
         title: 'Your',
-        top: '350vh',
-        left: '11vw'
+        top: topCalc(355, 150),
+        left: xAxisCalc(11)
       },
 
       {
         title: 'Home',
-        top: '360vh',
-        left: '13vw'
+        top: topCalc(355, 300),
+        left: xAxisCalc(13)
       }
   ];
 
@@ -127,13 +143,13 @@ const Experience = () => {
 
       {
         title: 'Modern',
-        top: '255vh',
+        top: '257vh',
         right: '15vw'
       },
 
       {
         title: 'Living.',
-        top: '265vh',
+        top: '267vh',
         right: '12vw'
       },
 
@@ -179,9 +195,11 @@ const Experience = () => {
     return sections;
   }, [setup])
 
+  console.log('Rendering');
+
   return (
     <>
-      <ScrollControls damping={0} pages={4.3}>
+      <ScrollControls damping={0.3} pages={4.3}>
         <Scroll>
           <Items />
         </Scroll>
@@ -194,4 +212,4 @@ const Experience = () => {
   );
 }
 
-export default Experience
+export default memo(Experience)

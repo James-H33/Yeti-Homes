@@ -5,8 +5,8 @@ import Experience from './components/Experience'
 function App() {
   return (
     <>
-      <Canvas>
-       <Experience />
+      <Canvas dpr={1}>
+        <Experience />
       </Canvas>
     </>
   )

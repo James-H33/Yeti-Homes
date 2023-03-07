@@ -1,19 +1,29 @@
 import { Image, useIntersect } from '@react-three/drei'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useMemo, useRef, useState } from 'react'
+import { memo, useMemo, useRef, useState } from 'react'
 import * as THREE from 'three'
 
 function Item({ url, scale, ...props }: any) {
   const isMobile = window.innerWidth < 600
   const visible = useRef(false)
   const [hovered, hover] = useState(false)
+  const [hasBeenAcitvated, setHasBeenAcitvated] = useState(false)
   const ref: any = useIntersect((isVisible) => (visible.current = isVisible))
   const { height } = useThree((state) => state.viewport)
 
   useFrame((state, delta) => {
-    ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, visible.current ? 0 : -height / 2 + 1, 4, delta)
-    ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, visible.current ? 1 : 1.5, 4, delta)
-    ref.current.material.grayscale = THREE.MathUtils.damp(ref.current.material.grayscale, hovered || isMobile ? 0 : 1, 4, delta)
+    let isVisible = visible.current || hasBeenAcitvated;
+    let yHeight = isVisible ? 0 : -height / 2 + 1;
+    let zoom = isVisible ? 1 : 1.5;
+    let grayscale = hovered || isMobile ? 0 : 1;
+
+    ref.current.position.y = THREE.MathUtils.damp(ref.current.position.y, yHeight, 4, delta)
+    ref.current.material.zoom = THREE.MathUtils.damp(ref.current.material.zoom, zoom, 4, delta)
+    ref.current.material.grayscale = THREE.MathUtils.damp(ref.current.material.grayscale, grayscale, 4, delta)
+
+    if (isVisible && !hasBeenAcitvated) {
+      setHasBeenAcitvated(true)
+    }
   })
 
   return (
@@ -30,7 +40,9 @@ function Item({ url, scale, ...props }: any) {
 
 function Items() {
   const isMobile = window.innerWidth < 600;
-  const { width: w, height: h } = useThree((state) => state.viewport)
+  let { width: w, height: h, aspect } = useThree((state) => state.viewport)
+
+  w = Math.min(w, 10)
 
   let halfSize = w / 2
   let thridSize = w / 3
@@ -53,12 +65,12 @@ function Items() {
     {
       path: "1-1.jpg",
       scale: [thridSize, thridSize, 1],
-      position: [w / 7, (fourthSize), 0]
+      position: [w / 7, (h / 4), 0]
     },
     {
       path: "1-2.jpg",
       scale: [halfSize, thridSize, 1],
-      position: [w / 7, -(fourthSize), 0]
+      position: [w / 7, -(h / 4), 0]
     },
 
     {
@@ -82,7 +94,7 @@ function Items() {
     {
       path: "5.jpg",
       scale: [fifthSize, fifthSize, 1],
-      position: [w / 10, -h * 1.75, 0]
+      position: [w / 10, -h * 1.85, 0]
     },
     {
       path: "6.jpg",
@@ -93,12 +105,12 @@ function Items() {
     {
       path: "12.jpg",
       scale: [halfSize, halfSize, 1],
-      position: [-w / 4, -h * 2.6, 0]
+      position: [-w / 4, -h * 2.8, 0]
     },
     {
       path: "8.jpg",
       scale: [halfSize, halfSize, 1],
-      position: [w / 4, -h * 3.1, 0]
+      position: [w / 4, -h * 3.2, 0]
     }
   ]
 
@@ -172,4 +184,4 @@ function Items() {
 }
 
 
-export default Items
+export default memo(Items)
